@@ -9,7 +9,6 @@ const SERVICES = [
   'Aluminum Fence',
   'PVC & Vinyl Fence',
   'Chain Link Fence',
-  'Not Sure / Other',
 ]
 
 const inputClass =
