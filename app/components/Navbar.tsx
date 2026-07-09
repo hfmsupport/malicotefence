@@ -43,7 +43,7 @@ export default function Navbar() {
             ) : (
               <a
                 key={item}
-                href={{ Home: '/#home', About: '/about', Gallery: '/#gallery', Contact: '/contact' }[item]}
+                href={{ Home: '/#home', About: '/about', Gallery: '/gallery', Contact: '/contact' }[item]}
                 className="text-sm font-medium text-gray-700 hover:text-[#1B3A2D] transition-colors duration-200 tracking-wide"
               >
                 {item}

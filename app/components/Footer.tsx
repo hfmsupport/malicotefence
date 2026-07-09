@@ -24,7 +24,7 @@ export default function Footer() {
             { label: 'Home',    href: '/#home' },
             { label: 'About',   href: '/about' },
             { label: 'Fences',  href: '/#fences' },
-            { label: 'Gallery', href: '/#gallery' },
+            { label: 'Gallery', href: '/gallery' },
             { label: 'Contact', href: '/contact' },
           ]).map(({ label, href }) => (
             <a key={label} href={href} className="block text-sm text-gray-500 hover:text-[#C9933A] transition-colors mb-2">{label}</a>
