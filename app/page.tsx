@@ -52,7 +52,7 @@ export default function Home() {
             </p>
 
             <div className="opacity-0 animate-fadeUp delay-400 flex flex-wrap gap-4 mb-14">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-[#C9933A] text-white px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-[#b8822f] transition-all duration-300 shadow-lg shadow-[#C9933A]/20">
+              <a href="/contact" className="inline-flex items-center gap-2 bg-[#C9933A] text-white px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-[#b8822f] transition-all duration-300 shadow-lg shadow-[#C9933A]/20">
                 Request Free Estimate →
               </a>
               <a href="#gallery" className="inline-flex items-center gap-2 border border-white/40 text-white px-8 py-4 text-sm font-medium uppercase tracking-widest hover:bg-white/10 transition-all duration-300">

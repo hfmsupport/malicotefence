@@ -19,7 +19,7 @@ export default function Navbar() {
           <p className="text-xs text-gray-500 tracking-widest uppercase">Est. 1994 · Cincinnati, Ohio</p>
         </a>
         <nav className="hidden md:flex items-center gap-8">
-          {['Home', 'About', 'Fences', 'Gallery', 'Contact'].map(item =>
+          {(['Home', 'About', 'Fences', 'Gallery', 'Contact'] as const).map(item =>
             item === 'Fences' ? (
               <div key="Fences" className="relative group">
                 <a href="/#fences" className="text-sm font-medium text-gray-700 hover:text-[#1B3A2D] transition-colors duration-200 tracking-wide flex items-center gap-1">
@@ -41,13 +41,17 @@ export default function Navbar() {
                 </div>
               </div>
             ) : (
-              <a key={item} href={`/#${item.toLowerCase()}`} className="text-sm font-medium text-gray-700 hover:text-[#1B3A2D] transition-colors duration-200 tracking-wide">
+              <a
+                key={item}
+                href={{ Home: '/#home', About: '/about', Gallery: '/#gallery', Contact: '/contact' }[item]}
+                className="text-sm font-medium text-gray-700 hover:text-[#1B3A2D] transition-colors duration-200 tracking-wide"
+              >
                 {item}
               </a>
             )
           )}
         </nav>
-        <a href="/#contact" className="hidden md:inline-flex items-center gap-2 bg-[#C9933A] text-white px-5 py-2.5 text-sm font-semibold rounded-none hover:bg-[#b8822f] transition-all duration-200 tracking-wide uppercase">
+        <a href="/contact" className="hidden md:inline-flex items-center gap-2 bg-[#C9933A] text-white px-5 py-2.5 text-sm font-semibold rounded-none hover:bg-[#b8822f] transition-all duration-200 tracking-wide uppercase">
           Free Estimate →
         </a>
       </div>
