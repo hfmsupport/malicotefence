@@ -40,7 +40,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4">Contact</h4>
           <p className="text-sm mb-2">(513) 560-8881</p>
           <p className="text-sm mb-2">(513) 254-4910</p>
-          <p className="text-sm mb-4">info@malicotefence.com</p>
+          <p className="text-sm mb-4">Malicotefence@gmail.com</p>
           <p className="text-sm text-gray-600">Mon–Fri: 8am–5pm</p>
         </div>
       </div>

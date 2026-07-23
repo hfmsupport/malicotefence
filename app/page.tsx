@@ -260,13 +260,13 @@ export default function Home() {
             <a href="tel:5135608881" className="inline-flex items-center gap-3 bg-[#C9933A] text-white px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-[#b8822f] transition-all duration-300 shadow-lg shadow-[#C9933A]/20 animate-pulseGlow">
               Call (513) 560-8881
             </a>
-            <a href="mailto:info@malicotefence.com" className="inline-flex items-center gap-3 border border-white/40 text-white px-10 py-4 font-medium uppercase tracking-widest text-sm hover:bg-white/10 transition-all duration-300">
+            <a href="mailto:Malicotefence@gmail.com" className="inline-flex items-center gap-3 border border-white/40 text-white px-10 py-4 font-medium uppercase tracking-widest text-sm hover:bg-white/10 transition-all duration-300">
               Email Us
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
             <span>📞 (513) 560-8881</span>
-            <span>✉ info@malicotefence.com</span>
+            <span>✉ Malicotefence@gmail.com</span>
             <span>🕐 Mon–Fri: 8am–5pm</span>
           </div>
         </div>
