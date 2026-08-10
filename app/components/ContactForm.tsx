@@ -21,6 +21,8 @@ export default function ContactForm() {
   const [selectedServices, setSelectedServices] = useState<string[]>([])
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleService = (service: string) => {
@@ -29,9 +31,35 @@ export default function ContactForm() {
     )
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError(false)
+
+    const formData = new FormData()
+    formData.append("access_key", "aeb74ea8-3f9a-430f-987a-33290b850606")
+    formData.append("name", name)
+    formData.append("email", email)
+    formData.append("phone", phone)
+    formData.append("services", selectedServices.join(", "))
+    formData.append("message", message)
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+      const data = await response.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -145,10 +173,17 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-[#C9933A] text-white font-bold py-4 rounded-lg text-sm tracking-wide hover:bg-[#b8822f] transition-colors mb-6"
+        disabled={submitting}
+        className="w-full bg-[#C9933A] text-white font-bold py-4 rounded-lg text-sm tracking-wide hover:bg-[#b8822f] transition-colors mb-4 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Send Message →
+        {submitting ? 'Sending…' : 'Send Message →'}
       </button>
+
+      {error && (
+        <p className="text-center text-sm text-red-600 mb-4">
+          Something went wrong — please try again or call us directly.
+        </p>
+      )}
 
       <p className="text-center text-sm text-[#4A4A4A]">
         Prefer to call? Reach us directly at{' '}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const fencesLinks = [
   { label: 'Wood Privacy Fence', href: '/fences/wood-privacy' },
   { label: 'Wood Picket Fence', href: '/fences/wood-picket' },
@@ -10,15 +12,18 @@ const fencesLinks = [
 ]
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [fencesOpen, setFencesOpen] = useState(false)
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm relative">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/">
           <span className="font-serif text-2xl font-bold text-[#1B3A2D] tracking-tight">MALICOTE</span>
           <span className="font-serif text-2xl font-normal text-[#C9933A]"> FENCE</span>
           <p className="text-xs text-gray-500 tracking-widest uppercase">Est. 1994 · Cincinnati, Ohio</p>
         </a>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {(['Home', 'About', 'Fences', 'Gallery', 'Contact'] as const).map(item =>
             item === 'Fences' ? (
               <div key="Fences" className="relative group">
@@ -51,10 +56,54 @@ export default function Navbar() {
             )
           )}
         </nav>
-        <a href="/contact" className="hidden md:inline-flex items-center gap-2 bg-[#C9933A] text-white px-5 py-2.5 text-sm font-semibold rounded-none hover:bg-[#b8822f] transition-all duration-200 tracking-wide uppercase">
+        <a href="/contact" className="hidden lg:inline-flex items-center gap-2 bg-[#C9933A] text-white px-5 py-2.5 text-sm font-semibold rounded-none hover:bg-[#b8822f] transition-all duration-200 tracking-wide uppercase">
           Free Estimate →
         </a>
+        <button
+          className="lg:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}/>
+          <span className={`block w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}/>
+          <span className={`block w-6 h-0.5 bg-[#1A1A1A] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}/>
+        </button>
       </div>
+      {menuOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-[#E8E3DC] shadow-xl z-50 px-4 py-6 flex flex-col gap-4">
+          <a href="/" className="text-sm font-semibold tracking-wide text-[#1A1A1A] py-2 border-b border-[#E8E3DC]" onClick={() => setMenuOpen(false)}>Home</a>
+
+          <div>
+            <button
+              className="w-full flex items-center justify-between text-sm font-semibold tracking-wide text-[#1A1A1A] py-2 border-b border-[#E8E3DC]"
+              onClick={() => setFencesOpen(!fencesOpen)}
+            >
+              Fences
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points={fencesOpen ? "18 15 12 9 6 15" : "6 9 12 15 18 9"}/>
+              </svg>
+            </button>
+            {fencesOpen && (
+              <div className="pl-4 flex flex-col gap-2 mt-2">
+                <a href="/fences/wood-privacy" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>Wood Privacy Fence</a>
+                <a href="/fences/wood-picket" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>Wood Picket Fence</a>
+                <a href="/fences/kentucky-board" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>Kentucky Board Fence</a>
+                <a href="/fences/aluminum" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>Aluminum Fence</a>
+                <a href="/fences/pvc-vinyl" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>PVC & Vinyl Fence</a>
+                <a href="/fences/chain-link" className="text-sm text-[#4A4A4A] py-1.5 hover:text-[#1B3A2D]" onClick={() => setMenuOpen(false)}>Chain Link Fence</a>
+              </div>
+            )}
+          </div>
+
+          <a href="/gallery" className="text-sm font-semibold tracking-wide text-[#1A1A1A] py-2 border-b border-[#E8E3DC]" onClick={() => setMenuOpen(false)}>Gallery</a>
+          <a href="/about" className="text-sm font-semibold tracking-wide text-[#1A1A1A] py-2 border-b border-[#E8E3DC]" onClick={() => setMenuOpen(false)}>About Us</a>
+          <a href="/contact" className="text-sm font-semibold tracking-wide text-[#1A1A1A] py-2 border-b border-[#E8E3DC]" onClick={() => setMenuOpen(false)}>Contact Us</a>
+
+          <a href="/contact" className="mt-2 bg-[#C9933A] text-white font-bold text-sm tracking-wide py-3 px-6 rounded-lg text-center hover:opacity-90 transition" onClick={() => setMenuOpen(false)}>
+            Get Free Estimate
+          </a>
+        </div>
+      )}
     </header>
   )
 }
