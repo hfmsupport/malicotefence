@@ -3,8 +3,21 @@ import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'About Us | Malicote Fence',
-  description: 'Family owned and operated since 1994. Malicote Fence proudly serves the Greater Cincinnati area with premium residential and commercial fencing.',
+  title: 'About Us',
+  description: 'Family owned and operated since 1994. Malicote Fence proudly serves the Greater Cincinnati area with premium residential and commercial fencing. Meet our team.',
+  openGraph: {
+    title: 'About Malicote Fence | Family Owned Since 1994',
+    description: 'Family owned and operated since 1994. Malicote Fence proudly serves the Greater Cincinnati area with premium residential and commercial fencing.',
+    url: 'https://www.malicotefence.com/about',
+    images: [{ url: '/images/about.jpg', width: 1200, height: 630, alt: 'Malicote Fence Team' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Malicote Fence | Family Owned Since 1994',
+    description: 'Family owned and operated since 1994. Serving Greater Cincinnati with premium fencing.',
+    images: ['/images/about.jpg'],
+  },
+  alternates: { canonical: 'https://www.malicotefence.com/about' },
 }
 
 const noiseBg = {

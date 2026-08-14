@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'Kentucky Board Fences | Malicote Fence Cincinnati',
-  description: 'Kentucky board fence installation in Cincinnati. Ranch-style post-and-board fencing for acreage and residential properties. Free estimates.',
+  title: 'Kentucky Board Fences Cincinnati',
+  description: 'Kentucky board fence installation in Cincinnati. Classic split-rail style, durable and attractive. Family owned since 1994. Free estimates from Malicote Fence.',
+  openGraph: {
+    title: 'Kentucky Board Fence Installation | Cincinnati',
+    description: 'Kentucky board fence installation in Cincinnati. Classic style, durable and attractive. Free estimates.',
+    url: 'https://www.malicotefence.com/fences/kentucky-board',
+    images: [{ url: '/images/kentucky-board.jpg', width: 1200, height: 630, alt: 'Kentucky Board Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'Kentucky Board Fence Installation Cincinnati', description: 'Kentucky board fence installation. Free estimates.', images: ['/images/kentucky-board.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/kentucky-board' },
 }
 
 const checkIcon = (
@@ -16,9 +24,20 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Kentucky Board Fence Installation',
+  provider: { '@type': 'LocalBusiness', name: 'Malicote Fence', telephone: '+15135608881', url: 'https://www.malicotefence.com' },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/kentucky-board',
+  description: 'Kentucky board fence installation in Cincinnati. Classic split-rail style, durable and attractive.',
+}
+
 export default function KentuckyBoardPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

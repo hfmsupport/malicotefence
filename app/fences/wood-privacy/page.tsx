@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'Wood Privacy Fences | Malicote Fence Cincinnati',
-  description: 'Premium wood privacy fence installation in Cincinnati. Family owned since 1994. Custom heights, quality lumber, fully insured. Free estimates.',
+  title: 'Wood Privacy Fences Cincinnati',
+  description: 'Premium wood privacy fence installation in Cincinnati and Greater Cincinnati. Custom heights, quality lumber, fully insured. Family owned since 1994. Free estimates.',
+  openGraph: {
+    title: 'Wood Privacy Fence Installation | Cincinnati',
+    description: 'Premium wood privacy fence installation in Cincinnati. Custom heights, quality lumber. Free estimates from Malicote Fence.',
+    url: 'https://www.malicotefence.com/fences/wood-privacy',
+    images: [{ url: '/images/wood-privacy.jpg', width: 1200, height: 630, alt: 'Wood Privacy Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'Wood Privacy Fence Installation Cincinnati', description: 'Premium wood privacy fence installation. Free estimates.', images: ['/images/wood-privacy.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/wood-privacy' },
 }
 
 const checkIcon = (
@@ -16,9 +24,25 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Wood Privacy Fence Installation',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Malicote Fence',
+    telephone: '+15135608881',
+    url: 'https://www.malicotefence.com',
+  },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/wood-privacy',
+  description: 'Premium wood privacy fence installation in Cincinnati and Greater Cincinnati.',
+}
+
 export default function WoodPrivacyPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

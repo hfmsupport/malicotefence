@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'Wood Picket Fences | Malicote Fence Cincinnati',
-  description: 'Classic wood picket fence installation in Cincinnati. Family owned since 1994. Paint/stain ready, custom tops, fully insured. Free estimates.',
+  title: 'Wood Picket Fences Cincinnati',
+  description: 'Classic wood picket fence installation in Cincinnati. Custom designs, quality craftsmanship, family owned since 1994. Free estimates from Malicote Fence.',
+  openGraph: {
+    title: 'Wood Picket Fence Installation | Cincinnati',
+    description: 'Classic wood picket fence installation in Cincinnati. Custom designs, quality craftsmanship. Free estimates.',
+    url: 'https://www.malicotefence.com/fences/wood-picket',
+    images: [{ url: '/images/wood-picket.jpg', width: 1200, height: 630, alt: 'Wood Picket Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'Wood Picket Fence Installation Cincinnati', description: 'Classic wood picket fence installation. Free estimates.', images: ['/images/wood-picket.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/wood-picket' },
 }
 
 const checkIcon = (
@@ -16,9 +24,20 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Wood Picket Fence Installation',
+  provider: { '@type': 'LocalBusiness', name: 'Malicote Fence', telephone: '+15135608881', url: 'https://www.malicotefence.com' },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/wood-picket',
+  description: 'Classic wood picket fence installation in Cincinnati and Greater Cincinnati.',
+}
+
 export default function WoodPicketPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

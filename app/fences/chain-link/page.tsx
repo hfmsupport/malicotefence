@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'Chain Link Fences | Malicote Fence Cincinnati',
-  description: 'Chain link fence installation in Cincinnati. Galvanized or vinyl coated, residential to commercial. Maximum durability, minimum cost. Free estimates.',
+  title: 'Chain Link Fences Cincinnati',
+  description: 'Affordable chain link fence installation in Cincinnati. Residential and commercial. Family owned since 1994. Free estimates from Malicote Fence.',
+  openGraph: {
+    title: 'Chain Link Fence Installation | Cincinnati',
+    description: 'Affordable chain link fence installation in Cincinnati. Residential and commercial. Free estimates.',
+    url: 'https://www.malicotefence.com/fences/chain-link',
+    images: [{ url: '/images/chain-link.jpg', width: 1200, height: 630, alt: 'Chain Link Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'Chain Link Fence Installation Cincinnati', description: 'Affordable chain link fence installation. Free estimates.', images: ['/images/chain-link.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/chain-link' },
 }
 
 const checkIcon = (
@@ -16,9 +24,20 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Chain Link Fence Installation',
+  provider: { '@type': 'LocalBusiness', name: 'Malicote Fence', telephone: '+15135608881', url: 'https://www.malicotefence.com' },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/chain-link',
+  description: 'Affordable chain link fence installation in Cincinnati. Residential and commercial.',
+}
+
 export default function ChainLinkPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

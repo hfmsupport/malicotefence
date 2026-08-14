@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'Aluminum Fences | Malicote Fence Cincinnati',
-  description: 'Aluminum fence installation in Cincinnati. Rust-proof, powder-coated, pool code compliant. Low maintenance elegance. Free estimates.',
+  title: 'Aluminum Fences Cincinnati',
+  description: 'Durable aluminum fence installation in Cincinnati. Low maintenance, rust-free, elegant designs. Family owned since 1994. Free estimates from Malicote Fence.',
+  openGraph: {
+    title: 'Aluminum Fence Installation | Cincinnati',
+    description: 'Durable aluminum fence installation in Cincinnati. Low maintenance, rust-free, elegant designs. Free estimates.',
+    url: 'https://www.malicotefence.com/fences/aluminum',
+    images: [{ url: '/images/aluminum.jpg', width: 1200, height: 630, alt: 'Aluminum Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'Aluminum Fence Installation Cincinnati', description: 'Durable aluminum fence installation. Free estimates.', images: ['/images/aluminum.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/aluminum' },
 }
 
 const checkIcon = (
@@ -16,9 +24,20 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Aluminum Fence Installation',
+  provider: { '@type': 'LocalBusiness', name: 'Malicote Fence', telephone: '+15135608881', url: 'https://www.malicotefence.com' },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/aluminum',
+  description: 'Durable aluminum fence installation in Cincinnati and Greater Cincinnati.',
+}
+
 export default function AluminumPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

@@ -6,8 +6,16 @@ import ServiceFeatures from '@/app/components/ServiceFeatures'
 import ServiceCTA from '@/app/components/ServiceCTA'
 
 export const metadata: Metadata = {
-  title: 'PVC & Vinyl Fences | Malicote Fence Cincinnati',
-  description: 'PVC and vinyl fence installation in Cincinnati. UV-stabilized, zero maintenance, weather proof. Privacy and picket styles available. Free estimates.',
+  title: 'PVC Vinyl Fences Cincinnati',
+  description: 'Low-maintenance PVC vinyl fence installation in Cincinnati. Durable, weather-resistant, beautiful. Family owned since 1994. Free estimates from Malicote Fence.',
+  openGraph: {
+    title: 'PVC Vinyl Fence Installation | Cincinnati',
+    description: 'Low-maintenance PVC vinyl fence installation in Cincinnati. Durable and weather-resistant. Free estimates.',
+    url: 'https://www.malicotefence.com/fences/pvc-vinyl',
+    images: [{ url: '/images/pvc-vinyl.jpg', width: 1200, height: 630, alt: 'PVC Vinyl Fence Cincinnati' }],
+  },
+  twitter: { card: 'summary_large_image', title: 'PVC Vinyl Fence Installation Cincinnati', description: 'Low-maintenance PVC vinyl fence installation. Free estimates.', images: ['/images/pvc-vinyl.jpg'] },
+  alternates: { canonical: 'https://www.malicotefence.com/fences/pvc-vinyl' },
 }
 
 const checkIcon = (
@@ -16,9 +24,20 @@ const checkIcon = (
   </svg>
 )
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'PVC Vinyl Fence Installation',
+  provider: { '@type': 'LocalBusiness', name: 'Malicote Fence', telephone: '+15135608881', url: 'https://www.malicotefence.com' },
+  areaServed: { '@type': 'City', name: 'Cincinnati', addressRegion: 'OH' },
+  url: 'https://www.malicotefence.com/fences/pvc-vinyl',
+  description: 'Low-maintenance PVC vinyl fence installation in Cincinnati. Durable and weather-resistant.',
+}
+
 export default function PvcVinylPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <main>
         <ServicePageHero

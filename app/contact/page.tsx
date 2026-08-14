@@ -21,6 +21,14 @@ const noiseBg = {
 const fieldClass =
   'w-full rounded-lg border border-[#E8E3DC] px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#C9933A] transition'
 
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Malicote Fence',
+  url: 'https://www.malicotefence.com/contact',
+  description: 'Get a free fence estimate from Malicote Fence. Serving Greater Cincinnati since 1994.',
+}
+
 export default function ContactPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -32,6 +40,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
       <Navbar />
 
       {submitted ? (
