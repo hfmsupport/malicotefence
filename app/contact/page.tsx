@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 
@@ -30,6 +31,7 @@ const contactPageSchema = {
 }
 
 export default function ContactPage() {
+  const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -136,7 +138,7 @@ export default function ContactPage() {
                 {/* RIGHT — form */}
                 <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12">
                   <form
-                    onSubmit={(e) => { e.preventDefault(); setSubmitted(true) }}
+                    onSubmit={(e) => { e.preventDefault(); setSubmitted(true); setTimeout(() => router.push("/thank-you"), 1500) }}
                     className="space-y-6"
                   >
                     {/* Name */}
